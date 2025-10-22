@@ -1,0 +1,143 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
+
+:root {
+  --x-color: #00b4d8;
+  --o-color: #ff4d6d;
+  --glow: rgba(255, 255, 255, 0.2);
+  --background: linear-gradient(135deg, #1e1e2f, #2a2a3c);
+}
+
+body {
+  background: var(--background);
+  font-family: "Poppins", sans-serif;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.app-container {
+  text-align: center;
+  padding: 2rem;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(15px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  width: 360px;
+  transition: all 0.3s ease;
+}
+
+header {
+  font-size: 2rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin-bottom: 1rem;
+  color: #fff;
+  text-shadow: 0 0 10px var(--glow);
+}
+
+p {
+  margin: 0.5rem 0;
+  font-size: 1.1rem;
+}
+
+.game-board-container {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  margin: 20px auto;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.row {
+  display: flex;
+}
+
+.cell {
+  width: 100px;
+  height: 100px;
+  border: 1.5px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  cursor: pointer;
+  color: white;
+  transition: all 0.25s ease;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+}
+
+.cell:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: scale(1.05);
+}
+
+/* X and O color distinction */
+.cell:has(> :first-child:contains("X")),
+.cell:has(> :first-child:contains("O")) {
+  cursor: default;
+}
+
+.cell:contains("X") {
+  color: var(--x-color);
+  text-shadow: 0 0 12px var(--x-color);
+}
+
+.cell:contains("O") {
+  color: var(--o-color);
+  text-shadow: 0 0 12px var(--o-color);
+}
+
+.reset-btn {
+  margin-top: 16px;
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: none;
+  background: linear-gradient(135deg, #00b4d8, #0077b6);
+  color: white;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 180, 216, 0.3);
+}
+
+.reset-btn:hover {
+  background: linear-gradient(135deg, #0096c7, #023e8a);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0, 150, 199, 0.5);
+}
+
+/* Winner glow effect */
+@keyframes winner-glow {
+  0% {
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.6);
+  }
+  100% {
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+  }
+}
+
+.winner {
+  animation: winner-glow 1s infinite alternate;
+}
+
+@media (max-width: 480px) {
+  .game-board-container {
+    width: 240px;
+  }
+  .cell {
+    width: 80px;
+    height: 80px;
+    font-size: 2rem;
+  }
+  header {
+    font-size: 1.6rem;
+  }
+}
