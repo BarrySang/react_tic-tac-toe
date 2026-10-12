@@ -1,73 +1,98 @@
-# React + TypeScript + Vite
+# React Tic-Tac-Toe
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A lightweight browser-based Tic-Tac-Toe game built with React, TypeScript, and Vite. The app provides a clean 3x3 gameplay experience where two players alternate placing X and O marks, with automatic win and draw detection.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Interactive 3x3 game board
+- Turn-based gameplay for two players
+- Win detection across rows, columns, and diagonals
+- Draw detection when the board fills up without a winner
+- Reset button to start a fresh round
+- Responsive, modern UI with a glassmorphism-inspired style
+- Built using React + TypeScript for a simple, maintainable frontend
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- React 19
+- TypeScript
+- Vite
+- CSS for styling
+- GitHub Pages deployment support via `gh-pages`
 
-## Expanding the ESLint configuration
+## Project Structure
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```text
+react_tic-tac-toe/
+├── src/
+│   ├── App.tsx        # Main game logic and UI
+│   ├── App.css        # Board and styling
+│   ├── main.tsx       # React entry point
+│   └── index.css      # Base styles
+├── public/
+├── package.json
+├── vite.config.ts
+├── tsconfig.json
+├── index.html
+└── README.md
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Getting Started
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Prerequisites
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- Node.js 18+
+- npm
+
+### Installation
+
+```bash
+npm install
 ```
+
+### Run locally
+
+```bash
+npm run dev
+```
+
+This starts the Vite development server, usually available at:
+
+```text
+http://localhost:5173
+```
+
+## Production Build
+
+```bash
+npm run build
+```
+
+This generates the production-ready files in the `dist` directory.
+
+## Preview Production Build
+
+```bash
+npm run preview
+```
+
+## Deployment
+
+This project includes a deploy script for GitHub Pages:
+
+```bash
+npm run deploy
+```
+
+## Gameplay Rules
+
+- Player X starts the game.
+- Players take turns clicking an empty square.
+- A player wins by lining up three marks in a row horizontally, vertically, or diagonally.
+- If all nine spaces are filled and no player has won, the game ends in a draw.
+- The current turn or winner is shown above the board, and the board can be reset at any time.
+
+## License
+
+This project is provided for educational and personal use.
+
